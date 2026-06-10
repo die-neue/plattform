@@ -34,10 +34,14 @@ export default async function BestaetigenPage({
       if (pending.unsub) {
         await redis.set(`unsub:${pending.unsub}`, pending.email);
       }
+      // Marker, damit ein zweiter Aufruf (Mail-Vorschau, Scanner oder Doppelklick)
+      // nicht faelschlich "abgelaufen" zeigt, sondern weiterhin "bestaetigt".
+      await redis.set(`confirmed:${token}`, pending.email, { ex: 60 * 60 * 24 * 7 });
       await redis.del(`pending:${token}`);
       status = "ok";
     } else {
-      status = "abgelaufen";
+      const confirmedEmail = (await redis.get(`confirmed:${token}`)) as string | null;
+      status = confirmedEmail ? "ok" : "abgelaufen";
     }
   }
 
