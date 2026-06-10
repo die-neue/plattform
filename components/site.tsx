@@ -70,8 +70,16 @@ export function Footer() {
           <div>
             <p className="font-bold uppercase tracking-wide text-ink">Rechtliches</p>
             <ul className="mt-3 space-y-1">
-              <li>Impressum (folgt)</li>
-              <li>Datenschutz (folgt)</li>
+              <li>
+                <Link href="/impressum" className="hover:text-ink">
+                  Impressum
+                </Link>
+              </li>
+              <li>
+                <Link href="/datenschutz" className="hover:text-ink">
+                  Datenschutz
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
