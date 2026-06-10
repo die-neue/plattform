@@ -42,13 +42,15 @@ export async function POST(req: NextRequest) {
   }
 
   const token = crypto.randomUUID();
+  const unsub = crypto.randomUUID();
   await redis.set(
     `pending:${token}`,
-    { email, typ, ts: Date.now() },
+    { email, typ, ts: Date.now(), unsub },
     { ex: 60 * 60 * 24 },
   );
 
   const confirmUrl = `${SITE_URL}/bestaetigen?token=${token}`;
+  const unsubUrl = `${SITE_URL}/abmelden?token=${unsub}`;
   try {
     await resend.emails.send({
       from: MAIL_FROM,
@@ -59,7 +61,13 @@ export async function POST(req: NextRequest) {
         "Bitte bestätige deine Anmeldung mit einem Klick:\n" +
         confirmUrl +
         "\n\nWenn du das nicht warst, ignoriere diese E-Mail einfach.\n\n" +
-        "Die Neue. Der Staat muss liefern oder lassen.",
+        "Abmelden kannst du dich jederzeit hier:\n" +
+        unsubUrl +
+        "\n\nDie Neue. Der Staat muss liefern oder lassen.",
+      headers: {
+        "List-Unsubscribe": `<${SITE_URL}/api/abmelden?token=${unsub}>`,
+        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      },
     });
   } catch {
     return NextResponse.json(

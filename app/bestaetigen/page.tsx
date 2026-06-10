@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Anmeldung bestätigen | Die Neue",
 };
 
-type Pending = { email: string; typ: string; ts: number };
+type Pending = { email: string; typ: string; ts: number; unsub?: string };
 
 export default async function BestaetigenPage({
   searchParams,
@@ -25,8 +25,15 @@ export default async function BestaetigenPage({
     if (pending && pending.email) {
       await redis.sadd("subscribers", pending.email);
       await redis.hset("subscriber_info", {
-        [pending.email]: { typ: pending.typ, confirmed: Date.now() },
+        [pending.email]: {
+          typ: pending.typ,
+          confirmed: Date.now(),
+          unsub: pending.unsub ?? null,
+        },
       });
+      if (pending.unsub) {
+        await redis.set(`unsub:${pending.unsub}`, pending.email);
+      }
       await redis.del(`pending:${token}`);
       status = "ok";
     } else {
