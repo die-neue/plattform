@@ -28,7 +28,7 @@ export default function Home() {
                 href="#mitmachen"
                 className="border border-tuerkis px-5 py-3 text-tuerkis hover:bg-tuerkis hover:text-navy"
               >
-                Mitglied werden
+                Unterstützer werden
               </Link>
               <a
                 href={REPO_URL}
@@ -80,8 +80,9 @@ export default function Home() {
             Mitmachen
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            Zwei Wege, dabei zu sein. Unterstützen kannst du sofort. Mitglied mit vollem
-            Stimmrecht wirst du über ein kurzes Aufnahmeverfahren.
+            Trag dich als Unterstützer ein, sofort und ohne Hürde. Mitglied mit vollem
+            Stimmrecht wirst du im nächsten Schritt. Wie das geht, erklären wir dir nach
+            deiner Bestätigung.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="border border-tuerkis p-6">
@@ -105,7 +106,9 @@ export default function Home() {
             </div>
 
             <div className="border border-white/15 p-6">
-              <p className="text-xs font-bold uppercase tracking-wide text-muted">Bald</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-muted">
+                Nächster Schritt
+              </p>
               <h3 className="mt-2 text-2xl font-black uppercase tracking-tight">
                 Mitglied werden
               </h3>
@@ -119,18 +122,17 @@ export default function Home() {
                 <li>Wählen und gewählt werden</li>
                 <li>Auf Parteitagen abstimmen</li>
               </ul>
-              <SignupForm
-                typ="mitglied"
-                buttonLabel="Vormerken"
-                placeholder="E-Mail für die Vormerkung"
-                variant="outline"
-              />
+              <Link
+                href="/mitglied"
+                className="mt-6 inline-block border border-tuerkis px-5 py-3 text-sm font-bold uppercase tracking-wide text-tuerkis hover:bg-tuerkis hover:text-navy"
+              >
+                So wirst du Mitglied
+              </Link>
             </div>
           </div>
           <p className="mt-4 text-xs text-muted">
             Nach der Eintragung erhältst du eine Bestätigungsmail (Double-Opt-in). Erst nach
-            deiner Bestätigung speichern wir dich. Mitgliedschaft und Vorschlagsprozess
-            starten in Kürze.
+            deiner Bestätigung speichern wir dich.
           </p>
         </section>
       </main>

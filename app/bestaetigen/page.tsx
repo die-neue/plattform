@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Footer } from "@/components/site";
 import { getRedis } from "@/lib/store";
+import { getResend, MAIL_FROM, SITE_URL } from "@/lib/mail";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,36 @@ export default async function BestaetigenPage({
       // Marker, damit ein zweiter Aufruf (Mail-Vorschau, Scanner oder Doppelklick)
       // nicht faelschlich "abgelaufen" zeigt, sondern weiterhin "bestaetigt".
       await redis.set(`confirmed:${token}`, pending.email, { ex: 60 * 60 * 24 * 7 });
+
+      // Begruessungsmail mit Mitglieds-Aufruf, einmalig (nur im pending-Zweig).
+      const resend = getResend();
+      if (resend) {
+        const unsubUrl = pending.unsub
+          ? `${SITE_URL}/abmelden?token=${pending.unsub}`
+          : `${SITE_URL}/abmelden`;
+        try {
+          await resend.emails.send({
+            from: MAIL_FROM,
+            to: pending.email,
+            subject: "Willkommen bei Die Neue",
+            text:
+              "Schön, dass du dabei bist. Du bist jetzt Unterstützer von Die Neue.\n\n" +
+              "Als Unterstützer kannst du Vorschläge einbringen, mitdiskutieren und bleibst informiert.\n\n" +
+              "Willst du wirklich mitentscheiden, über Programm und Ämter? Dann werde Mitglied:\n" +
+              `${SITE_URL}/mitglied\n\n` +
+              "Abmelden kannst du dich jederzeit hier:\n" +
+              `${unsubUrl}\n\n` +
+              "Die Neue. Der Staat muss liefern oder lassen.",
+            headers: {
+              "List-Unsubscribe": `<${SITE_URL}/api/abmelden?token=${pending.unsub}>`,
+              "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+            },
+          });
+        } catch {
+          // Begruessungsmail-Fehler ignorieren, die Bestaetigung bleibt gueltig.
+        }
+      }
+
       await redis.del(`pending:${token}`);
       status = "ok";
     } else {
