@@ -1,0 +1,12 @@
+import { Resend } from "resend";
+
+export function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
+
+export const MAIL_FROM =
+  process.env.MAIL_FROM || "Die Neue <noreply@die-neue.org>";
+
+export const SITE_URL = process.env.SITE_URL || "https://die-neue.org";

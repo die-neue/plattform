@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Header, Footer, REPO_URL } from "@/components/site";
+import { SignupForm } from "@/components/signup-form";
 import { kernformel, praeambel, sofortprogramm } from "@/lib/content";
 
 export default function Home() {
@@ -96,20 +97,11 @@ export default function Home() {
                 <li>An offenen Formaten teilnehmen</li>
                 <li>Spenden</li>
               </ul>
-              <form className="mt-6 flex flex-col gap-3 sm:flex-row" action="#">
-                <input
-                  type="email"
-                  required
-                  placeholder="Deine E-Mail"
-                  className="flex-1 border border-white/20 bg-navy px-4 py-3 text-ink placeholder:text-muted focus:border-tuerkis focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="bg-tuerkis px-5 py-3 font-bold uppercase tracking-wide text-navy hover:bg-tuerkis-600"
-                >
-                  Dabei sein
-                </button>
-              </form>
+              <SignupForm
+                typ="unterstuetzer"
+                buttonLabel="Dabei sein"
+                placeholder="Deine E-Mail"
+              />
             </div>
 
             <div className="border border-white/15 p-6">
@@ -127,25 +119,18 @@ export default function Home() {
                 <li>Wählen und gewählt werden</li>
                 <li>Auf Parteitagen abstimmen</li>
               </ul>
-              <form className="mt-6 flex flex-col gap-3 sm:flex-row" action="#">
-                <input
-                  type="email"
-                  required
-                  placeholder="E-Mail für die Vormerkung"
-                  className="flex-1 border border-white/20 bg-navy px-4 py-3 text-ink placeholder:text-muted focus:border-tuerkis focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="border border-tuerkis px-5 py-3 font-bold uppercase tracking-wide text-tuerkis hover:bg-tuerkis hover:text-navy"
-                >
-                  Vormerken
-                </button>
-              </form>
+              <SignupForm
+                typ="mitglied"
+                buttonLabel="Vormerken"
+                placeholder="E-Mail für die Vormerkung"
+                variant="outline"
+              />
             </div>
           </div>
           <p className="mt-4 text-xs text-muted">
-            Noch kein Versand aktiv, dies ist ein Vorschau-Auftritt. Mitgliedschaft und
-            Vorschlagsprozess starten in Kürze.
+            Nach der Eintragung erhältst du eine Bestätigungsmail (Double-Opt-in). Erst nach
+            deiner Bestätigung speichern wir dich. Mitgliedschaft und Vorschlagsprozess
+            starten in Kürze.
           </p>
         </section>
       </main>
