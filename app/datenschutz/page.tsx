@@ -31,8 +31,8 @@ export default function DatenschutzPage() {
           <div className="mt-8 space-y-6">
             <Block title="Verantwortlicher">
               <p>
-                Die Neue (in Gründung), [Straße und Hausnummer], [Postleitzahl] Berlin,
-                E-Mail [kontakt@die-neue.org].
+                Die Neue (in Gründung), vertreten durch Leonhard Kühne-Hellmessen,
+                Welzin 16, 17406 Usedom, E-Mail kontakt@die-neue.org.
               </p>
             </Block>
 
@@ -45,7 +45,7 @@ export default function DatenschutzPage() {
               <p>
                 Rechtsgrundlage ist deine Einwilligung nach Artikel 6 Absatz 1 Buchstabe a
                 der Datenschutz-Grundverordnung. Du kannst die Einwilligung jederzeit
-                widerrufen, zum Beispiel per E-Mail an [kontakt@die-neue.org]. Wir speichern
+                widerrufen, zum Beispiel per E-Mail an kontakt@die-neue.org. Wir speichern
                 die Daten nur so lange, wie es für diesen Zweck nötig ist, und geben sie nicht
                 an Dritte zu Werbezwecken weiter.
               </p>
@@ -74,7 +74,7 @@ export default function DatenschutzPage() {
                 Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der
                 Verarbeitung, Datenübertragbarkeit und Widerspruch. Du kannst dich außerdem
                 bei einer Datenschutz-Aufsichtsbehörde beschweren. Wende dich dafür an
-                [kontakt@die-neue.org].
+                kontakt@die-neue.org.
               </p>
             </Block>
           </div>

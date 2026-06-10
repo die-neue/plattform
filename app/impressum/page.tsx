@@ -25,19 +25,22 @@ export default function ImpressumPage() {
               <p className="mt-2">
                 Die Neue (in Gründung)
                 <br />
-                [Straße und Hausnummer]
+                Welzin 16
                 <br />
-                [Postleitzahl] Berlin
+                17406 Usedom
               </p>
             </div>
             <div>
               <h2 className="text-lg font-bold text-tuerkis">Vertreten durch</h2>
-              <p className="mt-2">Den Bundesvorstand: [Namen der Vorstandsmitglieder]</p>
+              <p className="mt-2">
+                Leonhard Kühne-Hellmessen (in Gründung, ein Vorstand wird mit der Gründung
+                gewählt)
+              </p>
             </div>
             <div>
               <h2 className="text-lg font-bold text-tuerkis">Kontakt</h2>
               <p className="mt-2">
-                E-Mail: [kontakt@die-neue.org]
+                E-Mail: kontakt@die-neue.org
               </p>
             </div>
             <div>
@@ -45,11 +48,11 @@ export default function ImpressumPage() {
                 Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
               </h2>
               <p className="mt-2">
-                [Vor- und Nachname]
+                Leonhard Kühne-Hellmessen
                 <br />
-                [Straße und Hausnummer]
+                Welzin 16
                 <br />
-                [Postleitzahl] Berlin
+                17406 Usedom
               </p>
             </div>
             <div>
