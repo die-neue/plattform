@@ -79,25 +79,73 @@ export default function Home() {
             Mitmachen
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            Wir bauen eine Partei, die liefert. Trag dich ein und sei von Anfang an dabei.
-            Der Mitglieds- und Vorschlagsprozess startet in Kürze.
+            Zwei Wege, dabei zu sein. Unterstützen kannst du sofort. Mitglied mit vollem
+            Stimmrecht wirst du über ein kurzes Aufnahmeverfahren.
           </p>
-          <form className="mt-6 flex max-w-md flex-col gap-3 sm:flex-row" action="#">
-            <input
-              type="email"
-              required
-              placeholder="Deine E-Mail"
-              className="flex-1 border border-white/20 bg-navy px-4 py-3 text-ink placeholder:text-muted focus:border-tuerkis focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-tuerkis px-5 py-3 font-bold uppercase tracking-wide text-navy hover:bg-tuerkis-600"
-            >
-              Dabei sein
-            </button>
-          </form>
-          <p className="mt-3 text-xs text-muted">
-            Noch kein Versand aktiv, dies ist ein Vorschau-Auftritt.
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="border border-tuerkis p-6">
+              <p className="text-xs font-bold uppercase tracking-wide text-tuerkis">Jetzt</p>
+              <h3 className="mt-2 text-2xl font-black uppercase tracking-tight">
+                Unterstützer werden
+              </h3>
+              <p className="mt-3 text-sm text-muted">Sofort, ohne Hürde, kostenlos.</p>
+              <ul className="mt-4 space-y-2 text-sm text-ink/90">
+                <li>Newsletter und Infos erhalten</li>
+                <li>Vorschläge einbringen</li>
+                <li>Mitdiskutieren</li>
+                <li>An offenen Formaten teilnehmen</li>
+                <li>Spenden</li>
+              </ul>
+              <form className="mt-6 flex flex-col gap-3 sm:flex-row" action="#">
+                <input
+                  type="email"
+                  required
+                  placeholder="Deine E-Mail"
+                  className="flex-1 border border-white/20 bg-navy px-4 py-3 text-ink placeholder:text-muted focus:border-tuerkis focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="bg-tuerkis px-5 py-3 font-bold uppercase tracking-wide text-navy hover:bg-tuerkis-600"
+                >
+                  Dabei sein
+                </button>
+              </form>
+            </div>
+
+            <div className="border border-white/15 p-6">
+              <p className="text-xs font-bold uppercase tracking-wide text-muted">Bald</p>
+              <h3 className="mt-2 text-2xl font-black uppercase tracking-tight">
+                Mitglied werden
+              </h3>
+              <p className="mt-3 text-sm text-muted">
+                Volles Stimmrecht, Programm und Ämter mitgestalten. Über ein
+                Aufnahmeverfahren mit kurzer Prüffrist. Beitrag ab 3 Euro im Monat, sozial
+                gestaffelt.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-ink/90">
+                <li>Über Positionen mitentscheiden</li>
+                <li>Wählen und gewählt werden</li>
+                <li>Auf Parteitagen abstimmen</li>
+              </ul>
+              <form className="mt-6 flex flex-col gap-3 sm:flex-row" action="#">
+                <input
+                  type="email"
+                  required
+                  placeholder="E-Mail für die Vormerkung"
+                  className="flex-1 border border-white/20 bg-navy px-4 py-3 text-ink placeholder:text-muted focus:border-tuerkis focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="border border-tuerkis px-5 py-3 font-bold uppercase tracking-wide text-tuerkis hover:bg-tuerkis hover:text-navy"
+                >
+                  Vormerken
+                </button>
+              </form>
+            </div>
+          </div>
+          <p className="mt-4 text-xs text-muted">
+            Noch kein Versand aktiv, dies ist ein Vorschau-Auftritt. Mitgliedschaft und
+            Vorschlagsprozess starten in Kürze.
           </p>
         </section>
       </main>
